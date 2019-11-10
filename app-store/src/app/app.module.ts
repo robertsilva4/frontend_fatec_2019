@@ -7,12 +7,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageLayoutComponent } from './pages/page-layout/page-layout.component';
 import { FormsModule } from '@angular/forms';
 import { PageLoginComponent } from './pages/page-login/page-login.component';
+import { NavCategoriasComponent } from './components/nav-categorias/nav-categorias.component';
+import { PageHomeComponent } from './pages/page-home/page-home.component';
+import { CarouselHomeComponent } from './components/carousel-home/carousel-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageLayoutComponent,
-    PageLoginComponent
+    PageLoginComponent,
+    NavCategoriasComponent,
+    PageHomeComponent,
+    CarouselHomeComponent
   ],
   imports: [
     BrowserModule,
