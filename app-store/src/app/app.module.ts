@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,6 +10,8 @@ import { PageLoginComponent } from './pages/page-login/page-login.component';
 import { NavCategoriasComponent } from './components/nav-categorias/nav-categorias.component';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { CarouselHomeComponent } from './components/carousel-home/carousel-home.component';
+import { CardProdutoComponent } from './components/card-produto/card-produto.component';
+import { ItemCategoriaComponent } from './components/item-categoria/item-categoria.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,16 @@ import { CarouselHomeComponent } from './components/carousel-home/carousel-home.
     PageLoginComponent,
     NavCategoriasComponent,
     PageHomeComponent,
-    CarouselHomeComponent
+    CarouselHomeComponent,
+    CardProdutoComponent,
+    ItemCategoriaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

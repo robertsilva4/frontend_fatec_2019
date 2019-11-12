@@ -25,5 +25,8 @@ export class ProdutoService extends BaseService {
     return this.HttpClient.get<Produto>(this.EndPoint(`Produto/Consultar/${id}`));
   }
 
+  public ConsultarPorCategoria(idCategoria: number): Observable<Produto[]> {
+    return this.HttpClient.get<Produto[]>(this.EndPoint(`Produto/ConsultarPorCategoria/${idCategoria}`));
+  }
   
 }
