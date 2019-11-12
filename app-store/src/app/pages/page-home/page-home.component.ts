@@ -3,6 +3,7 @@ import { ProdutoService } from 'src/app/services/produto-service/produto.service
 import { Observable } from 'rxjs';
 import { Produto, Categoria } from 'src/app/models/produto.model';
 import { CategoriaService } from 'src/app/services/categoria-service/categoria.service';
+import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho.service';
 
 @Component({
   selector: 'page-home',
@@ -17,16 +18,21 @@ export class PageHomeComponent implements OnInit {
 
   constructor(
     private ProdutoService: ProdutoService,
-    private CategoriaService: CategoriaService
-    ) { }
+    private CategoriaService: CategoriaService,
+    private CarrinhoService: CarrinhoService
+  ) { }
 
   ngOnInit() {
     this.Produtos = this.ProdutoService.Listar();
     this.Categorias = this.CategoriaService.Listar();
   }
 
-  public ListarPorCategoria(idCategoria: number){
-    this.Produtos = this.ProdutoService.ConsultarPorCategoria(idCategoria);
+  public ListarPorCategoria(categoria: Categoria) {
+    this.Produtos = this.ProdutoService.ConsultarPorCategoria(categoria.Id);
+  }
+
+  public AdicionarAoCarrinho(produto: Produto) {
+    
   }
 
 }

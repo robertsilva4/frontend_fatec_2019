@@ -1,12 +1,14 @@
 <div class="row ">
     <div class="col-md-3 ">
         <nav-categorias>
-            <item-categoria *ngFor="let item of Categorias | async" [Categoria]="item" (click)="ListarPorCategoria(item.Id)"></item-categoria>
+            <item-categoria *ngFor="let item of Categorias | async" [Categoria]="item"
+                (click)="ListarPorCategoria(item)"></item-categoria>
         </nav-categorias>
     </div>
     <div class="col-md-9">
         <div class="row">
-            <card-produto class="col-md-4" *ngFor="let item of Produtos | async" [Produto]="item"></card-produto>
+            <card-produto class="col-md-4" *ngFor="let item of Produtos | async" [Produto]="item"
+                (click)="AdicionarAoCarrinho(item)"></card-produto>
         </div>
     </div>
 </div>
