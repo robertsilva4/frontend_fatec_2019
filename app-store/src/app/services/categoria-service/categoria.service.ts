@@ -14,6 +14,6 @@ export class CategoriaService extends BaseService {
   }
 
   public Listar(): Observable<Categoria[]> {
-    return this.HttpClient.get<Categoria[]>(this.EndPoint("Categoria/Listar"));
+    return this.HttpClient.get<Categoria[]>(this.EndPoint("Categoria"));
   }
 }

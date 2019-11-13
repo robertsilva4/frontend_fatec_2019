@@ -25,6 +25,8 @@ export class CarrinhoService extends BaseService {
   }
 
   public Adicionar(item: CarrinhoProduto) {
-    
+    this.GetCarrinho();
+    this.Carrinho.Produtos.push(item);
+    this.AtualizarCarrinho();
   }
 }
