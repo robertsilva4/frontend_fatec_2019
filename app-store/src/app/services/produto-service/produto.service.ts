@@ -18,15 +18,15 @@ export class ProdutoService extends BaseService {
   }
 
   public Deletar(id: number) {
-    this.HttpClient.delete(`Produto/Deletar/${id}`);
+    this.HttpClient.delete(`Produto/${id}`);
   }
 
   public Consultar(id: number): Observable<Produto> {
-    return this.HttpClient.get<Produto>(this.EndPoint(`Produto/Consultar/${id}`));
+    return this.HttpClient.get<Produto>(this.EndPoint(`Produto/${id}`));
   }
 
   public ConsultarPorCategoria(idCategoria: number): Observable<Produto[]> {
-    return this.HttpClient.get<Produto[]>(this.EndPoint(`Produto/ConsultarPorCategoria/${idCategoria}`));
+    return this.HttpClient.get<Produto[]>(this.EndPoint(`Produto/${idCategoria}`));
   }
   
 }

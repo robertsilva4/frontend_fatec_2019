@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Produto, Categoria } from 'src/app/models/produto.model';
 import { CategoriaService } from 'src/app/services/categoria-service/categoria.service';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho.service';
+import { PaginaProduto } from 'src/app/models/paginaproduto.model';
 
 @Component({
   selector: 'page-home',
@@ -12,8 +13,8 @@ import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho.serv
 })
 
 export class PageHomeComponent implements OnInit {
-
-  public Produtos: Observable<Produto[]>;
+  
+  public PaginaProdutos : Observable<PaginaProduto>[];
   public Categorias: Observable<Categoria[]>;
 
   constructor(
@@ -22,13 +23,12 @@ export class PageHomeComponent implements OnInit {
     private CarrinhoService: CarrinhoService
   ) { }
 
-  ngOnInit() {
-    this.Produtos = this.ProdutoService.Listar();
+  ngOnInit() {    
     this.Categorias = this.CategoriaService.Listar();
   }
 
-  public ListarPorCategoria(categoria: Categoria) {
-    this.Produtos = this.ProdutoService.ConsultarPorCategoria(categoria.Id);
+  public CriarPaginacao(categoria: Categoria) {
+     
   }
 
   public AdicionarAoCarrinho(produto: Produto) {
