@@ -2,7 +2,7 @@
     <div class="col-md-3 ">
         <nav-categorias>
             <item-categoria *ngFor="let item of Categorias | async" [Categoria]="item"
-                (click)="ListarPorCategoria(item)"></item-categoria>
+                (click)="CriarPaginacao(item)"></item-categoria>
         </nav-categorias>
     </div>
     <div class="col-md-9">
