@@ -19,8 +19,7 @@ export class PageHomeComponent implements OnInit {
 
   constructor(
     private ProdutoService: ProdutoService,
-    private CategoriaService: CategoriaService,
-    private CarrinhoService: CarrinhoService
+    private CategoriaService: CategoriaService
   ) { }
 
   ngOnInit() {    
@@ -33,6 +32,8 @@ export class PageHomeComponent implements OnInit {
 
   public AdicionarAoCarrinho(produto: Produto) {
     
+  public ListarPorCategoria(categoria: Categoria) {
+    //this.Produtos = this.ProdutoService.ConsultarPorCategoria(categoria.Id);
   }
 
 }
