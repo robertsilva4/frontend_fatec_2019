@@ -28,7 +28,7 @@ export class CarrinhoService extends BaseService {
   }
 
   public Inserir(Carrinho: Carrinho): Observable<Carrinho> {
-    return this.HttpClient.post<Carrinho>(this.EndPoint(`Carrinho`), Carrinho);
+    return this.HttpClient.post<Carrinho>(this.EndPoint("Carrinho"), Carrinho);
   }
 
   private AtualizarCarrinho() {
@@ -54,6 +54,11 @@ export class CarrinhoService extends BaseService {
   public Remover(item: CarrinhoProduto) {
     this.GetCarrinho();
     this._carrinho.Produtos = this._carrinho.Produtos.filter(t => t.Produto.Id !== item.Produto.Id);
+    this.AtualizarCarrinho();
+  }
+
+  public LimparCarrinho() {
+    this._carrinho = new Carrinho();
     this.AtualizarCarrinho();
   }
 

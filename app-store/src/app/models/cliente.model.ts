@@ -5,3 +5,9 @@ export class Cliente {
     Email: string;
     Senha: string;
 }
+
+export class Usuario extends Cliente {
+    constructor() {
+        super();
+    }
+}

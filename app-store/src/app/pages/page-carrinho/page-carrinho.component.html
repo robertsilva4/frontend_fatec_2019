@@ -10,6 +10,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Quantidade</th>
                 <th scope="col">Valor</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -17,10 +18,21 @@
                 <td>{{item.Produto.Nome}}</td>
                 <td>{{item.Quantidade}}</td>
                 <td>{{item.Produto.Valor | currency:'BRL'}}</td>
+                <td><button type="button" class="btn btn-secondary btn-sm" (click)="RemoverItem(item)">X</button></td>
             </tr>
         </tbody>
     </table>
 </div>
 <div class="row">
-    <strong> <span class="col-md-12">TOTAL: {{Total() | currency:'BRL'}}</span></strong>
+    <div class="col-md-6">
+        <strong> <span class="col-md-12">TOTAL: {{Total | currency:'BRL'}}</span></strong>
+    </div>
+    <div class="col-md-6 text-right">
+        <button type="button" class="btn btn-primary" (click)="Finalizar()">Finalizar</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h5 class="text-center">{{Aviso}}</h5>
+    </div>
 </div>

@@ -1,0 +1,30 @@
+<div class="row" *ngIf="UsuarioLogado === null">
+    <div class="col-md-4 offset-md-4">
+        <h4 class="text-center">Autenticação</h4>
+        <form>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Digite o seu email" [(ngModel)]="UsuarioLogin.Email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="Senha">Senha</label>
+                <input type="password" class="form-control" id="Senha" placeholder="Senha"
+                    [(ngModel)]="UsuarioLogin.Senha" name="senha">
+            </div>
+            <button class="btn btn-primary" (click)="Logar()">Autenticar</button>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <h5 class="text-center">{{Aviso}}</h5>
+    </div>
+</div>
+<div class="row" *ngIf="UsuarioLogado !== null">
+    <div class="col-md-4 offset-md-4">
+        <h4 class="text-center">Usuário Logado:</h4>
+        <h5 class="text-center">{{UsuarioLogado?.Nome}}</h5>
+        <div class="text-center">
+            <button class="btn btn-primary" (click)="Deslogar()">Deslogar</button>
+        </div>
+    </div>
+</div>
