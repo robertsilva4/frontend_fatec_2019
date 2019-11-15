@@ -4,6 +4,7 @@ export class Cliente {
     Cpf: string;
     Email: string;
     Senha: string;
+    ConfirmarSenha: string;
 }
 
 export class Usuario extends Cliente {

@@ -13,6 +13,7 @@ import { CarouselHomeComponent } from './components/carousel-home/carousel-home.
 import { CardProdutoComponent } from './components/card-produto/card-produto.component';
 import { ItemCategoriaComponent } from './components/item-categoria/item-categoria.component';
 import { PageCarrinhoComponent } from './pages/page-carrinho/page-carrinho.component';
+import { PageClienteComponent } from './pages/page-cliente/page-cliente.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PageCarrinhoComponent } from './pages/page-carrinho/page-carrinho.compo
     CarouselHomeComponent,
     CardProdutoComponent,
     ItemCategoriaComponent,
-    PageCarrinhoComponent
+    PageCarrinhoComponent,
+    PageClienteComponent
   ],
   imports: [
     BrowserModule,

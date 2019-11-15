@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="text-center">Cliente</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" placeholder="Nome do cliente" name="nome"
+                    [(ngModel)]="Cliente.Nome">
+            </div>
+
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" placeholder="CPF do cliente" name="cpf"
+                    [(ngModel)]="Cliente.Cpf">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email do cliente" name="email"
+                    [(ngModel)]="Cliente.Email">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control" id="senha" placeholder="Senha do cliente"
+                            name="senha" [(ngModel)]="Cliente.Senha">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="comfirmarsenha">Confirmar Senha</label>
+                        <input type="password" class="form-control" id="comfirmarsenha" placeholder="Senha do cliente"
+                            name="comfirmarsenha" [(ngModel)]="Cliente.ConfirmarSenha">
+                    </div>
+                </div>
+            </div>
+            <button (click)="Salvar()" class="btn btn-primary">Salvar</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="text-center">{{Aviso}}</h3>
+    </div>
+</div>
