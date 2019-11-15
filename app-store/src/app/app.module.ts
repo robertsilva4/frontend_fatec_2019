@@ -14,6 +14,7 @@ import { CardProdutoComponent } from './components/card-produto/card-produto.com
 import { ItemCategoriaComponent } from './components/item-categoria/item-categoria.component';
 import { PageCarrinhoComponent } from './pages/page-carrinho/page-carrinho.component';
 import { PageClienteComponent } from './pages/page-cliente/page-cliente.component';
+import { PagePedidosComponent } from './pages/page-pedidos/page-pedidos.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PageClienteComponent } from './pages/page-cliente/page-cliente.componen
     CardProdutoComponent,
     ItemCategoriaComponent,
     PageCarrinhoComponent,
-    PageClienteComponent
+    PageClienteComponent,
+    PagePedidosComponent
   ],
   imports: [
     BrowserModule,
@@ -38,4 +40,5 @@ import { PageClienteComponent } from './pages/page-cliente/page-cliente.componen
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

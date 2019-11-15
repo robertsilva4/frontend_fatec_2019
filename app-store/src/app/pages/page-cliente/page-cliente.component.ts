@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente-service/cliente.service';
 import { AutenticacaoService } from 'src/app/services/autenticacao-service/autenticacao.service';
-import { Usuario, Cliente } from 'src/app/models/cliente.model';
+import { Cliente } from 'src/app/models/cliente.model';
 
 @Component({
   selector: 'page-cliente',

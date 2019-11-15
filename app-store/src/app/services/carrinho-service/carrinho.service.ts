@@ -4,6 +4,7 @@ import { BaseService } from '../base.service';
 import { Carrinho, CarrinhoProduto } from 'src/app/models/carrinho.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Cliente } from 'src/app/models/cliente.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,10 @@ export class CarrinhoService extends BaseService {
 
   public Inserir(Carrinho: Carrinho): Observable<Carrinho> {
     return this.HttpClient.post<Carrinho>(this.EndPoint("Carrinho"), Carrinho);
+  }
+
+  public Consultar(cliente: Cliente): Observable<Carrinho[]> {
+    return this.HttpClient.get<Carrinho[]>(this.EndPoint(`Carrinho/${cliente.Id}`));
   }
 
   private AtualizarCarrinho() {

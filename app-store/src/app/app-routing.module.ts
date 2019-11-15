@@ -5,6 +5,7 @@ import { PageLoginComponent } from './pages/page-login/page-login.component';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { PageCarrinhoComponent } from './pages/page-carrinho/page-carrinho.component';
 import { PageClienteComponent } from './pages/page-cliente/page-cliente.component';
+import { PagePedidosComponent } from './pages/page-pedidos/page-pedidos.component';
 
 const routes: Routes = [
   //{ path: "login", component: PageLoginComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
       { path: "home", component: PageHomeComponent },
       { path: "login", component: PageLoginComponent },
       { path: "carrinho", component: PageCarrinhoComponent },
-      { path: "cliente", component: PageClienteComponent }
+      { path: "cliente", component: PageClienteComponent },
+      { path: "pedidos", component: PagePedidosComponent }
     ]
   }
 ];
