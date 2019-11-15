@@ -51,12 +51,11 @@ export class PageHomeComponent implements OnInit {
   }  
 
   public CarregarPagina() {
-      //this.IndiceAtual = IndiceRequisitado;
       this.PaginaAtual = this.PaginaProdutos[this.IndiceAtual];
   }
 
   public ProximaPagina() {
-     if (this.IndiceAtual < this.PaginaProdutos.length){
+     if (this.IndiceAtual < (this.PaginaProdutos.length - 1)){
         this.IndiceAtual++;
         this.CarregarPagina();
      }
@@ -67,6 +66,11 @@ export class PageHomeComponent implements OnInit {
         this.IndiceAtual--;
         this.CarregarPagina();
      }
+  }
+
+  public SelecionarIndice(Indice : number) {
+     this.IndiceAtual = Indice;
+     this.CarregarPagina();
   }
 
   public AdicionarAoCarrinho(produto: Produto) {

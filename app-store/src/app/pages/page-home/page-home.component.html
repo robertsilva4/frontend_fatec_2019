@@ -19,7 +19,7 @@
                    <li class="page-item" 
                        *ngFor="let Pagina of PaginaProdutos; let i = index" 
                        [ngClass]="{'active': i == IndiceAtual }"
-                       (click)="CarregarPagina(i)">
+                       (click)="SelecionarIndice(i)">
                        <span class="page-link">{{i + 1}}</span>
                    </li>                
                    <li class="page-item">
