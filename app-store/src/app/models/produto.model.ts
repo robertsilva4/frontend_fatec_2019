@@ -1,4 +1,4 @@
-import { Contadores } from './paginacao.model';
+import { Contadores } from './contadores.model';
 
 export class Produto {
     Id: number;

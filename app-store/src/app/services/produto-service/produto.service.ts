@@ -7,6 +7,7 @@ import { Produto, PaginaProduto } from 'src/app/models/produto.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProdutoService extends BaseService {
 
   constructor(private HttpClient: HttpClient) { 
@@ -25,18 +26,7 @@ export class ProdutoService extends BaseService {
     return this.HttpClient.get<Produto>(this.EndPoint(`Produto/${id}`));
   }
 
-  public ConsultarPorCategoria(PaginaProduto: PaginaProduto): Observable<Produto[]> {
-    return this.HttpClient.post<Produto[]>(this.EndPoint(`Produto/Categoria`), PaginaProduto);
-    return this.HttpClient.get<Produto>(this.EndPoint(`Produto/${id}`));
+  public BuscarPagina(PaginaProduto: PaginaProduto): Observable<PaginaProduto> {
+    return this.HttpClient.post<PaginaProduto>(this.EndPoint(`Produto`), PaginaProduto);
   }
-
-  public NovaPagina() : PaginaProduto {
-    let pagina = new PaginaProduto();
-    pagina.Contadores.NumeroPagina = 1;
-    pagina.Contadores.TamanhoPagina = 10;
-    return pagina;
-  public ConsultarPorCategoria(idCategoria: number): Observable<Produto[]> {
-    return this.HttpClient.get<Produto[]>(this.EndPoint(`Produto/${idCategoria}`));
-  }
-  
 }

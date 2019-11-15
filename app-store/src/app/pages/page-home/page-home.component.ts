@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdutoService } from 'src/app/services/produto-service/produto.service';
 import { Observable } from 'rxjs';
 import { Produto, Categoria } from 'src/app/models/produto.model';
 import { CategoriaService } from 'src/app/services/categoria-service/categoria.service';
-import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho.service';
 import { PaginaProduto } from 'src/app/models/paginaproduto.model';
+import { PaginacaoProdutoService } from 'src/app/services/paginacao-produto-service/paginacao-produto.service';
+import { Contadores } from 'src/app/models/contadores.model';
 
 @Component({
   selector: 'page-home',
@@ -13,27 +13,67 @@ import { PaginaProduto } from 'src/app/models/paginaproduto.model';
 })
 
 export class PageHomeComponent implements OnInit {
-  
   public PaginaProdutos : Observable<PaginaProduto>[];
-  public Categorias: Observable<Categoria[]>;
+  public Categorias     : Categoria[];
+  public PaginaAtual    : Observable<PaginaProduto>;
+  public IndiceAtual    : number;
 
   constructor(
-    private ProdutoService: ProdutoService,
-    private CategoriaService: CategoriaService
-  ) { }
-
-  ngOnInit() {    
-    this.Categorias = this.CategoriaService.Listar();
+    private CategoriaService: CategoriaService,
+    private PaginacaoProdutoService : PaginacaoProdutoService
+  ) { 
+    this.PaginacaoProdutoService.ChangePaginas.subscribe(
+      paginas => this.AtribuirPaginas(paginas)
+    );
   }
 
-  public CriarPaginacao(categoria: Categoria) {
-     
+  ngOnInit() {    
+    this.IndiceAtual = 0;
+    this.CategoriaService.Listar().subscribe(
+      categorias =>  {
+         this.Categorias = categorias;
+         this.MontarPaginacao(categorias[this.IndiceAtual]);
+      }
+    );
+  }
+
+  AtribuirPaginas(Paginas : Observable<PaginaProduto>[]) {
+    this.PaginaProdutos = Paginas;
+    this.PaginaAtual = Paginas[0];
+  }
+
+  MontarPaginacao(Categoria : Categoria) {
+    let paginaProduto = new PaginaProduto();
+    paginaProduto.Categoria = Categoria;
+    paginaProduto.Contadores = new Contadores();
+    paginaProduto.Contadores.TamanhoPagina = 12;
+    this.PaginacaoProdutoService.CriarPaginacao(paginaProduto);
+  }  
+
+  public CarregarPagina() {
+      //this.IndiceAtual = IndiceRequisitado;
+      this.PaginaAtual = this.PaginaProdutos[this.IndiceAtual];
+  }
+
+  public ProximaPagina() {
+     if (this.IndiceAtual < this.PaginaProdutos.length){
+        this.IndiceAtual++;
+        this.CarregarPagina();
+     }
+  }
+
+  public PaginaAnterior() {
+     if (this.IndiceAtual > 0) {
+        this.IndiceAtual--;
+        this.CarregarPagina();
+     }
   }
 
   public AdicionarAoCarrinho(produto: Produto) {
-    
-  public ListarPorCategoria(categoria: Categoria) {
-    //this.Produtos = this.ProdutoService.ConsultarPorCategoria(categoria.Id);
+   
   }
-
+  
+  /*public ListarPorCategoria(categoria: Categoria) {
+    //this.Produtos = this.ProdutoService.ConsultarPorCategoria(categoria.Id);
+  }*/
 }
