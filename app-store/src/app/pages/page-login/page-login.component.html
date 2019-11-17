@@ -1,4 +1,4 @@
-<div class="row" *ngIf="UsuarioLogado === null">
+<div class="row" *ngIf="!UsuarioLogado">
     <div class="col-md-4 offset-md-4">
         <h4 class="text-center">Autenticação</h4>
         <form>
@@ -19,10 +19,9 @@
         <h5 class="text-center">{{Aviso}}</h5>
     </div>
 </div>
-<div class="row" *ngIf="UsuarioLogado !== null">
+<div class="row" *ngIf="UsuarioLogado">
     <div class="col-md-4 offset-md-4">
-        <h4 class="text-center">Usuário Logado:</h4>
-        <h5 class="text-center">{{UsuarioLogado?.Nome}}</h5>
+        <h5 class="text-center">Você está Logado</h5>
         <div class="text-center">
             <button class="btn btn-primary" (click)="Deslogar()">Deslogar</button>
         </div>

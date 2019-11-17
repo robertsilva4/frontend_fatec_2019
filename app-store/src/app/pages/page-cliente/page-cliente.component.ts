@@ -20,10 +20,16 @@ export class PageClienteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.Cliente = this.AutenticacaoService.UsuarioLogado;
-    if (this.Cliente === null) {
-      this.Cliente = new Cliente();
-    }
+    this.Cliente = new Cliente();
+    if (this.AutenticacaoService.UsuarioLogado)
+      this.CarregarCliente();
+  }
+
+  public CarregarCliente() {
+    this.ClienteService.Consultar().subscribe(
+      sucess => this.Cliente = sucess,
+      error => console.log(error)
+    )
   }
 
   public Salvar() {

@@ -11,32 +11,31 @@ import { HttpClient } from '@angular/common/http';
 
 export class AutenticacaoService extends BaseService {
 
-  private _usuarioLogado: Usuario;
-
   constructor(
     private HttpClient: HttpClient,
     private StorageService: StorageService
-  ) { 
+  ) {
     super();
-    this._usuarioLogado = undefined;
   }
 
-  public Logar(Usuario: Usuario): Observable<Usuario> {
-    return this.HttpClient.post<Usuario>(this.EndPoint("Autenticacao"), Usuario);
+  public Logar(Usuario: Usuario): Observable<any> {
+    let body = `username=${Usuario.Email}&password=${Usuario.Senha}&grant_type=password`;
+    return this.HttpClient.post(this.EndPoint("Token"), body);
   }
 
-  get UsuarioLogado(): Usuario {
-    this._usuarioLogado = JSON.parse(this.StorageService.Select("user"));
-    return this._usuarioLogado;
+  get UsuarioLogado(): boolean {
+    return this.StorageService.Select("access_token") !== null;
   }
 
-  public SalvarUsuarioStorage(usario: Usuario) {
-    this._usuarioLogado = usario;
-    this.StorageService.Insert("user", JSON.stringify(this._usuarioLogado));
+  get AccessToken(): string {
+    return `Bearer ${this.StorageService.Select("access_token")}`;
   }
 
-  public RemoverUsuarioStorage() {
-    this._usuarioLogado = undefined;
-    this.StorageService.Remove("user");
+  public SalvarToken(token: string) {
+    this.StorageService.Insert("access_token", token);
+  }
+
+  public RemoverToken() {
+    this.StorageService.Remove("access_token");
   }
 }

@@ -9,7 +9,9 @@ import { Categoria } from 'src/app/models/produto.model';
 })
 export class CategoriaService extends BaseService {
 
-  constructor(private HttpClient: HttpClient) { 
+  constructor(
+    private HttpClient: HttpClient
+    ) { 
     super();
   }
 

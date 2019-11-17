@@ -11,7 +11,6 @@ import { Usuario } from 'src/app/models/cliente.model';
 export class PageLoginComponent implements OnInit {
 
   public UsuarioLogin: Usuario;
-  public UsuarioLogado: Usuario;
   public Aviso: string;
 
   constructor(
@@ -21,12 +20,14 @@ export class PageLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.UsuarioLogado = this.AutenticacaoService.UsuarioLogado;
+  }
+
+  get UsuarioLogado(): boolean {
+    return this.AutenticacaoService.UsuarioLogado;
   }
 
   public Deslogar() {
-    this.AutenticacaoService.RemoverUsuarioStorage();
-    this.UsuarioLogado = null;
+    this.AutenticacaoService.RemoverToken();
     this.UsuarioLogin = new Usuario();
   }
 
@@ -34,13 +35,8 @@ export class PageLoginComponent implements OnInit {
     this.Aviso = undefined;
 
     this.AutenticacaoService.Logar(this.UsuarioLogin).subscribe(
-      sucess => {
-        if (sucess !== null) {
-          this.UsuarioLogado = sucess;
-          this.AutenticacaoService.SalvarUsuarioStorage(sucess);
-        } else {
-          this.Aviso = "Dados de usuário inválidos";
-        }
+      token => {
+        this.AutenticacaoService.SalvarToken(token.access_token);
       },
       error => {
         this.Aviso = "Erro ao se autenticar";
