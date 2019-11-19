@@ -59,7 +59,6 @@ export class PageCarrinhoComponent implements OnInit {
     if (this.AutenticacaoService.UsuarioLogado == undefined) {
       this.Router.navigate(['/login']);
     } else {
-      this._carrinho.Cliente = this.AutenticacaoService.UsuarioLogado;
       this.InserirCompra();
     }
   }
