@@ -15,7 +15,8 @@ export class CategoriaService extends BaseService {
     super();
   }
 
-  public Listar(): Observable<Categoria[]> {
-      return null;
+  public Listar(): Observable<Categoria[]> 
+  {
+      return this.HttpClient.get<Categoria[]>("http://localhost:63426/api/Categoria");
   }
 }
